@@ -6,6 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="main.js"></script>
+    <input type="radio" name="gender" value="male" onchange="ChangeGender()"> male
+    <input type="radio" name="gender" value="female" onchange="ChangeGender()"> Female 
+    <script>
+      function ChangeGender(){
+        // เลือก gender ทั้งหมด
+        let genders = document.querySelectionAll('input[name="gender"]');
+        // ดูว่าอันไหนเอามา check
+        for (let i = 0; i < genders.lenght;i++){
+            if(genders[i].checked) {
+                console.log("Gender Selected: "+genders[i].value);
+            }
+        }
+     }
+
+    </script>
 </body>
 </html>
