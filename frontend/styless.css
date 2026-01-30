@@ -1,0 +1,63 @@
+/* 1. CSS Reset & Base Styles - ปรับพื้นฐานให้ทุก Browser แสดงผลใกล้เคียงกัน */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* ช่วยให้คำนวณขนาดกว้าง-ยาวได้แม่นยำขึ้น */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* 2. Layout Container - กำหนดความกว้างหน้าเว็บ */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* 3. Typography - จัดการหัวข้อและตัวอักษร */
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* 4. Components - ส่วนประกอบต่างๆ เช่น ปุ่ม */
+.btn-primary {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* 5. Responsive - ปรับแต่งให้ดูดีในมือถือ */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+}
