@@ -1,17 +1,4 @@
-
-function submitData () {
-    let firstNameDOM = document.querySelector('input[name=firstname]');
-    let lastNameDOM = document.querySelector('input[name=lastname]');
-    let ageDOM = document.querySelector('input[name=age]');
-    let genderDOM = document.querySelector('input[name=gender]:checked');
-    let interestDOMs = document.querySelectorAll('input[name=interest]:checked');
-    let descriptionDOM = document.querySelector('textarea[name=description]');
-
-    let interest = ''
-    for (let i = 0; i < interestDOMs.length; i++) {
-        interest += interestDOMs[i].value 
-        if (i != interestDOMs.length - 1) {
-            interest += ','const validateData = (userData) => {
+const validateData = (userData) => {
     let err =[]
     if (!userData.firstname) {
         err.push('กรุณากรอกชื่อ');
@@ -70,13 +57,13 @@ try{
         description: descriptionDOM.value
     }
 
-    const err = validateData(userData);
+   const err = validateData(userData);
     if (err.length > 0) {
         throw{
             message: 'กรอกข้อมูลไม่ครบถ้วน',
             errors: err
         }
-    }
+   }
 
     console.log('submitData', userData);
     const response = await axios.post('http://localhost:8000/users', userData);
@@ -85,9 +72,12 @@ try{
     }catch (err) {
         console.log('Error Message', err.message)
         console.log('Error Details', err.errors)
-        //if (err.response) {
-        //console.log('Error Response', err.response.data.message);
-        //}
+        if (err.response) {
+           console.log('Error Response', err.response.data.message);
+           error.message = error.responsedata.message
+           error.errors = error.response.data.errors
+        }
+
         let htmlData = '<div>'
         htmlData += `<div>${err.message}</div>`
         htmlData += '<ul>'
@@ -101,18 +91,4 @@ try{
         messageDOM.innerHTML = htmlData;
         messageDOM.className = 'message danger';
     }
-}
-        }
-    }
-
-    let userData ={
-        firstName: firstNameDOM.value,
-        lastName: lastNameDOM.value,
-        age: ageDOM.value,
-        gender: genderDOM.value,
-        description: descriptionDOM.value,
-        interest: interest
-    }
-     console.log('submitData', userData);
-
 }
